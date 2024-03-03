@@ -1,0 +1,24 @@
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: user-management
+#          uri: http://localhost:8000
+#          predicates:
+#            - Path=/test/**
+#          filters:
+#            - name: GlobalPreFilter
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    reactor.netty.http.client: TRACE
